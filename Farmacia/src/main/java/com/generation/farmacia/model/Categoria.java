@@ -1,5 +1,6 @@
 package com.generation.farmacia.model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,9 +23,9 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "O atributo categoria é obrigatório!")
-	@Size(min = 5, max = 100, message = "O atributo categoria deve conter no minimo 05 e no máximo 100 caracteres")
-	private String Categoria;
+	@NotBlank(message = "O atributo descrição é obrigatório!")
+	@Size(min = 5, max = 1000, message = "O atributo descrição deve conter no minimo 05 e no máximo 1000 caracteres")
+	private String descricao;
 
 	@NotBlank(message = "O atributo tipo de produto é obrigatório!")
 	@Size(min = 3, max = 100, message = "O atributo tipo de produto deve conter no minímo 3 e no máximo 100 caracteres")
@@ -34,9 +35,9 @@ public class Categoria {
 	@Size(min = 3, max = 100, message = "O atributo desconto deve conter no minímo 3 e no máximo 100 caracteres")
 	private String desconto;
 
-	@NotBlank(message = "O atributo promoção é obrigatório!")
-	@Size(min = 3, max = 100, message = "O atributo promoção deve conter no minímo 3 e no máximo 100 caracteres")
-	private String promocao;
+	@NotBlank(message = "O atributo valor de desconto é obrigatório!")
+	@Size(min = 0, max = 1000, message = "O atributo valor de desconto deve conter no minímo 0 e no máximo 1000 caracteres")
+	private BigDecimal valorDesconto;
 
 	@NotBlank(message = "O atributo Forda de pagamento é obrigatório!")
 	@Size(min = 3, max = 100, message = "O atributo forma de pagamento deve conter no minímo 3 e no máximo 100 caracteres")
@@ -54,12 +55,12 @@ public class Categoria {
 		this.id = id;
 	}
 
-	public String getCategoria() {
-		return Categoria;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setCategoria(String categoria) {
-		Categoria = categoria;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getTipoProduto() {
@@ -78,12 +79,12 @@ public class Categoria {
 		this.desconto = desconto;
 	}
 
-	public String getPromocao() {
-		return promocao;
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
 	}
 
-	public void setPromocao(String promocao) {
-		this.promocao = promocao;
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
 	}
 
 	public String getFormaPagamento() {

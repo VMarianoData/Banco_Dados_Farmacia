@@ -1,5 +1,6 @@
 package com.generation.farmacia.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Produto {
 
 	@NotBlank(message = "O atributo titulo é obrigatório!")
 	@Size(min = 5, max = 100, message = "O atributo título dece conter no minimo 05 e no máximo 100 caracteres")
-	private String Nome;
+	private String nome;
 
 	@NotBlank(message = "O atributo validade é obrigatório!")
 	@Size(min = 3, max = 100, message = "O atributo validade deve conter no minímo 3 e no máximo 100 caracteres")
@@ -35,16 +36,16 @@ public class Produto {
 	@Size(min = 3, max = 100, message = "O atributo cor deve conter no minímo 3 e no máximo 100 caracteres")
 	private String cor;
 
-	@NotBlank(message = "O atributo preco é obrigatório!")
-	@Size(min = 3, max = 100, message = "O atributo preco deve conter no minímo 3 e no máximo 100 caracteres")
-	private String preco;
+	@NotBlank(message = "O atributo preço é obrigatório!")
+	@Size(min = 0, max = 9999, message = "O atributo preço deve conter no minímo 0 e no máximo 9999 caracteres")
+	private BigDecimal preco;
+
+	@UpdateTimestamp
+	private LocalDateTime date;
 
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
-
-	@UpdateTimestamp
-	private LocalDateTime date;
 
 	public Long getId() {
 		return id;
@@ -55,11 +56,11 @@ public class Produto {
 	}
 
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
 
 	public String getValidade() {
@@ -78,11 +79,11 @@ public class Produto {
 		this.cor = cor;
 	}
 
-	public String getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
 
-	public void setPreco(String preco) {
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
 

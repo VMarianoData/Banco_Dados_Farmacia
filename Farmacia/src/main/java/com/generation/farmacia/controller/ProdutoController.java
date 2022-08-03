@@ -47,9 +47,9 @@ public class ProdutoController {
 
 	}
 
-	@GetMapping("/produto{produto}")
-	public ResponseEntity<List<Produto>> getByTitulo(@PathVariable String produto) {
-		return ResponseEntity.ok(produtoRepository.findAllByTituloContainingIgnoreCase(produto));
+	@GetMapping("/produto{nome}")
+	public ResponseEntity<List<Produto>> getByProduto(@PathVariable String nome) {
+		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
 	@PostMapping
@@ -79,7 +79,7 @@ public class ProdutoController {
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
-	public void delte(@PathVariable long id) {
+	public void delete(@PathVariable long id) {
 		Optional<Produto> postagem = produtoRepository.findById(id);
 
 		if (postagem.isEmpty())
